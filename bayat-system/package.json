@@ -1,0 +1,65 @@
+{
+  "name": "bayat-alakena-real-estate",
+  "version": "1.8.1",
+  "description": "نظام إدارة وفرز وحجز الوحدات العقارية",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "desktop": "electron-rebuild -f -w better-sqlite3 && electron .",
+    "build:win": "electron-builder --win nsis",
+    "backup": "node scripts/backup.js",
+    "test": "node scripts/test-v1.8.1.js",
+    "test:v1.2": "node scripts/test-v1.2.js",
+    "test:v1.3": "node scripts/test-v1.3.js",
+    "test:v1.4": "node scripts/test-v1.4.js",
+    "test:v1.5": "node scripts/test-v1.5.js",
+    "test:direction": "node scripts/test-direction.js",
+    "test:v1.6": "node scripts/test-v1.6.js",
+    "test:icons": "node scripts/test-icons.js",
+    "test:v1.7": "node scripts/test-v1.6.js",
+    "test:v1.8": "node scripts/test-v1.8.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.4.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "pdfkit": "^0.19.1"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.1",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.bayatalakena.inventory",
+    "productName": "Bayat Alakena Real Estate",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "public/**/*",
+      "server.js",
+      "db.js",
+      "lib/**/*",
+      "fonts/**/*",
+      "package.json",
+      "!data/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Bayat Alakena Real Estate"
+    }
+  }
+}
